@@ -13,15 +13,15 @@ export class LinksService {
     @InjectRepository(LinksRepository)
     private readonly linksRepository: LinksRepository,
   ) {}
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   async getAllLinks(): Promise<Array<Link>> {
     return this.linksRepository.find({});
   }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   async createLink(createLinkDto: CreateLinkDto): Promise<Link> {
     return this.linksRepository.createLink(createLinkDto);
   }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   async getLink(conditions: FindConditions<Link>): Promise<Link> {
     const link = await this.linksRepository.findOne(conditions);
 
@@ -31,7 +31,7 @@ export class LinksService {
 
     return link;
   }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   async deleteLink(getLinkDto: GetLinkDto): Promise<void> {
     const { id } = getLinkDto;
     const res = await this.linksRepository.delete({ id });
@@ -40,7 +40,7 @@ export class LinksService {
       throw new NotFoundException(`Link with ID: "${id}" not found`);
     }
   }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   async updateLink(
     getLinkDto: GetLinkDto,
     updateLinkDto: UpdateLinkDto,
